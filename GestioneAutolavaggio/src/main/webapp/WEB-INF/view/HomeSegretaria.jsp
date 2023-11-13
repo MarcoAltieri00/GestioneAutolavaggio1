@@ -11,7 +11,7 @@
 <head>
 <link rel="stylesheet" type="text/css" href="css/stile.css">
 <meta charset="ISO-8859-1">
-<title>Home Segretaria</title>
+<title>Insert title here</title>
 </head>
 <body>
 <style>
@@ -88,11 +88,11 @@ TARGA:<input type="text" name="targa" required>
    if ( c != null) {
        if (c == 1) {
 %>
-     <h2><%="Ordine Non Riuscito, Seleziona Almeno Una Lavorazione!"%><h2>
+     <%="Ordine inserito"%>
 <%
  } else if (c == 0) {
 %>
-     <h2><%="Ordine inserito con successo!"%><h2>
+     <%="Ordine inserito con successo!"%>
       </center>
 <%
 
