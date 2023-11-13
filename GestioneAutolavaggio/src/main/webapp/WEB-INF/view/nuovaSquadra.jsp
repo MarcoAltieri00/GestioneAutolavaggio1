@@ -59,7 +59,7 @@
    for(Operaio oo: lista2){
 %>
 <tr>
-<td><%= oo.getNome() %> </td>
+	<td><%= oo.getNome() %> </td>
 	<td><%= oo.getCognome() %> </td>
 	<td><%= oo.getCf() %> </td>
 	
@@ -68,11 +68,11 @@
 <% } }%>
 
    <% Integer c=(Integer)session.getAttribute("verifica");
-   
+
    if ( c != null) {
        if (c == 1) {
 %>
-     <%="Squadra Inserita correttamente"%>
+     <%="Operatori Non Inseriti,Seleziona Almeno Un Operatore! "%>
 <%
  } else if (c == 0) {
 %>
