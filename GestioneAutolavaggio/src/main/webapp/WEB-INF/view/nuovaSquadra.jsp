@@ -72,11 +72,11 @@
    if ( c != null) {
        if (c == 1) {
 %>
-     <%="Squadra Inserita correttamente"%>
+     <h2><%="Errore Inserimento Squadra, Seleziona un Operatore!"%><h2>
 <%
  } else if (c == 0) {
 %>
-     <%="Operatori inseriti con successo!"%>
+    <h2> <%="Operatori inseriti con successo!"%><h2>
 <%
  }
 }

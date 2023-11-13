@@ -88,11 +88,11 @@ TARGA:<input type="text" name="targa" required>
    if ( c != null) {
        if (c == 1) {
 %>
-     <%="Ordine inserito"%>
+    <h2> <%="Errore nella scelta, seleziona una lavorazione!"%><h2>
 <%
  } else if (c == 0) {
 %>
-     <%="Ordine inserito con successo!"%>
+    <h2> <%="Lavorazione inserita con successo!"%><h2>
       </center>
 <%
 
