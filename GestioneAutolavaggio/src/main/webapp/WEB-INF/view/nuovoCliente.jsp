@@ -6,27 +6,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="css/stile.css">
+
 <meta charset="ISO-8859-1">
 <title>Registrazione Cliente</title>
 </head>
 <body>
-<div id="container">
-<style>
-  table,tr,td{
-  
-  text-align: center;
-  }
-</style>
 
 
 
-<table align=center>
+
+
+<table>
 
 <th colspan=4><a href="/index">HOME</a></th>
 <h1><tr><th colspan=3> ELENCO CLIENTI REGISTRATI :</th></tr></h1>
 
-<tr><td>NOME</td> <td>COGNOME</td><td>CODICE FISCALE</td></tr>
+
    <% ArrayList<Cliente> lista=(ArrayList<Cliente>)session.getAttribute("lista");
    if(lista!=null){
    for(Cliente c: lista){
@@ -82,11 +77,6 @@ session.invalidate();
    
    
    
-   
-   
-</table>
-   
-    </div>
-    <div id="background-image"></div>
+
 </body>
 </html>

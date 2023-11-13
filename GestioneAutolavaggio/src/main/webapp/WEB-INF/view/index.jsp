@@ -5,8 +5,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="/css/stile.css">
+
     <title>Menu</title>
     
 </head>
@@ -15,9 +14,9 @@
 
 
 
-    <div id="container">
+    <table border=1px>
         <h1>Menu</h1>
-        <table>
+ 
             <tr height='100px'>
                 <td><a href="/nuovoCliente">Registra Cliente</a></td>
                 <td><a href="/nuovo_veicolo">Registra Veicoli</a></td>
@@ -29,9 +28,9 @@
                 
 
             </tr>
-        </table>
-        <p style="font-size: 18px; margin-top: 20px;">Pagina Principale</p>
-    </div>
-    <div id="background-image"></div>
+       </table>
+        
+  
+  
 </body>
 </html>

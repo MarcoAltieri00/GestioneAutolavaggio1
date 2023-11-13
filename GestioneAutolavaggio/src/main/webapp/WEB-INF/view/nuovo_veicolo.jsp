@@ -5,31 +5,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" type="text/css" href="css/stile.css">
     <meta charset="ISO-8859-1">
     <title>Registrazione Veicolo</title>
-    <style>
-        table, tr, td {
-            border: 1px solid black;
-            text-align: center;
-        }
-    </style>
+   
 </head>
 <body>
  
-<table align="center">
+
     <tr>
-        <th colspan="4"><a href="/index">HOME</a></th>
+        <th><a href="/index">HOME</a></th>
            <h1><tr>
-        <th colspan="4">VEICOLI REGISTRATI :</th>
+        <th>VEICOLI REGISTRATI :</th>
     </tr></h1>
     </tr>
 
-    <tr>
-        <td>TARGA</td>
-        <td>TELAIO</td>
-        <td>CODICE FISCALE</td>
-    </tr>
+
     <% ArrayList<RecuperoInfoDTO> lista=(ArrayList<RecuperoInfoDTO>)session.getAttribute("listapos");
     if(lista!=null){
         for(RecuperoInfoDTO r : lista){ %>
@@ -42,7 +32,7 @@
     } %>
 
     <tr>
-        <td colspan="4">INSERISCI UN NUOVO VEICOLO:</td>
+        <h1><td>INSERISCI UN NUOVO VEICOLO:</td></h1>
     </tr>
     <tr>
         <td colspan="4">
@@ -77,7 +67,6 @@
         </th>
     </tr>
 
-</table>
-<div id="background-image"></div>
+
 </body>
 </html>

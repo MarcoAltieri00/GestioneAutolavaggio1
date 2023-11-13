@@ -9,33 +9,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="css/stile.css">
+
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Home Segretaria</title>
 </head>
 <body>
-<style>
-  table, tr,td{
-  border:1px solid black;
-  
-  text-align: center;
-  }
-</style>
 
-<table align=center>
+
+
 <th colspan=4><a href="/index">HOME</a></th>
 <% Integer a=(Integer)session.getAttribute("numero");%>
 <form action="/insertOrdine" method="post">
-
+<br>
 <tr ><th colspan=4>CREA ORDINE <%= a+1 %> :</th> </tr>
-<tr><td>LAVORAZIONE</td> <td>COSTO</td><td>CODICE</td><td>SELEZIONA</td></tr>
-
+<br>
    <% ArrayList<Lavorazione> lista=(ArrayList<Lavorazione>)session.getAttribute("tabella1");
    if(lista!=null){
    for(Lavorazione l: lista){
 %>
 <tr>
-<td><%= l.getNome() %> </td>
+	<td><%= l.getNome() %> </td>
 	<td><%= l.getCosto() %> </td>
 	<td><%= l.getCodice() %> </td>
 	<td><input type="checkbox" name="ordine" value="<%= l.getCodice() %>"></td>
@@ -43,45 +36,42 @@
 	
 <% } }%>
 
-
-</table>
-<center>
+<br>
+<br>
 TARGA:<input type="text" name="targa" required>
 <input type="submit" value="CREA ORDINE" >
+<br>
+<br>
 </form>
-</center>
 
-
-<center>
-<table>
 
 <tr ><th colspan=6>LAVORAZIONI ATTIVE <%= a %> :</th> </tr>
-<tr><td>CODICE ORDINE</td> <td>TARGA</td><td>LAVORAZIONE</td><td>PREZZO</td><td>CODICE SQUADRA</td><td>DATA</td></tr>
+<br>
 
    <% ArrayList<RecuperoSegretariaDTO> lista2=(ArrayList<RecuperoSegretariaDTO>)session.getAttribute("tabella2");
    if(lista2!=null){
    for(RecuperoSegretariaDTO info : lista2){
 %>
+<br>
 <tr>
-<td><%= info.getCodiceOrdine() %> </td>
+	<td><%= info.getCodiceOrdine() %> </td>
 	<td><%= info.getTarga() %> </td>
 	<td><%= info.getNomeLavorazione() %> </td>
 	<td><%= info.getPrezzo() %> </td>
 	<td><%= info.getCodiceSquadra() %> </td>
 	<td><%= info.getDataLavorazione() %> </td>	
 </tr>
-	
+	<br>
 <% } }%>
 
 
 
 
 
-</table>
-</center>
 
 
-<center>
+
+
 
    <% Integer c=(Integer)session.getAttribute("verifica");
    
@@ -93,7 +83,7 @@ TARGA:<input type="text" name="targa" required>
  } else if (c == 0) {
 %>
      <%="Ordine inserito con successo!"%>
-      </center>
+
 <%
 
  }
@@ -108,6 +98,6 @@ session.invalidate();
 }
    
    %>
-<div id="background-image"></div>
+
 </body>
 </html>
