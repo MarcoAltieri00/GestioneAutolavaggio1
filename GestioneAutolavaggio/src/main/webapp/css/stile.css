@@ -1,0 +1,96 @@
+@charset "ISO-8859-1";
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #00B0F2;
+    margin: 0;
+    padding: 0;
+   
+    
+}
+
+#container {
+    background-color: #00B0F2;
+    border-radius: 10px;
+    width: 700px;
+    padding: 20px;
+    text-align: center;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+table {
+    width: 55%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 2px solid #333;
+    padding: 15px;
+    
+}
+
+th {
+    background-color:white;
+    color: black;
+}
+
+a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+a:hover {
+    color: #555;
+}
+
+th[colspan="8"] {
+    background-color: #555;
+}
+
+th[colspan="8"] a {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+}
+
+td {
+    background-color: #f8f8f8;
+}
+
+td a {
+    display: block;
+    padding: 10px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+td a:hover {
+    background-color: #555;
+    color: white;
+}
+
+td[colspan="8"] {
+    background-color: #555;
+    color: white;
+}
+
+td[colspan="8"] a {
+    font-size: 20px;
+}
+
+h1 {
+    color: #333;
+}
+
+#background-image {
+    background: url("/img/WASH-removebg.png") center/contain no-repeat;
+    background-size: 400px;
+    width: 100%;
+    height: 200px; /* Adjust the height as needed */
+    margin-top: 20px;
+}
