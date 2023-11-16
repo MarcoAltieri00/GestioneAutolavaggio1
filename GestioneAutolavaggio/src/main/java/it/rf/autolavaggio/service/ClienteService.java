@@ -43,4 +43,22 @@ public class ClienteService {
 		}
 }
 
+
+	public Cliente findById(String cf) {
+		Optional<Cliente> c=this.vrepo.findById(cf);
+		if(c.isPresent()) {
+			
+		
+		Cliente cliente =c.get();
+		return cliente;
+	}else {
+		return null;
+	}
+}
+	
+	
+	
+	
+	
+	
 }

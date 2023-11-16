@@ -24,20 +24,30 @@
 <table align=center>
 
 <th colspan=4><a href="/index">HOME</a></th>
-<h1><tr><th colspan=3> ELENCO CLIENTI REGISTRATI :</th></tr></h1>
+<h1><tr><th colspan=4> ELENCO CLIENTI REGISTRATI :</th></tr></h1>
 
-<tr><td>NOME</td> <td>COGNOME</td><td>CODICE FISCALE</td></tr>
-   <% ArrayList<Cliente> lista=(ArrayList<Cliente>)session.getAttribute("lista");
-   if(lista!=null){
-   for(Cliente c: lista){
-%>
-<tr>
-	<td><%= c.getNome() %> </td>
-	<td><%= c.getCognome() %> </td>
-	<td><%= c.getCf() %> </td>
-</tr>
-	
-<% } }%>
+<tr><td>NOME</td> <td>COGNOME</td><td>CODICE FISCALE</td><td>STORICO</td></tr>
+
+   
+        <% ArrayList<Cliente> lista = (ArrayList<Cliente>) session.getAttribute("lista");
+           if (lista != null) {
+               for (Cliente c : lista) {
+        %>
+        <form action="/visualizzaStorico" method="post">
+        <tr>
+            <td><%= c.getNome() %> </td>
+            <td><%= c.getCognome() %> </td>
+            <td><%= c.getCf() %> </td>
+            <td>
+                <input type="hidden" name="cfCliente" value="<%= c.getCf() %>">
+                <input type="submit" value="VISUALIZZA STORICO">
+                 </form>
+            </td>
+        </tr>
+       
+        <% } } %>
+   
+
 
 <tr><td colspan=4>INSERISCI UN NUOVO CLIENTE:</td></tr>
 <tr>

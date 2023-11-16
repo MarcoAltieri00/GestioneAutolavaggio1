@@ -30,7 +30,15 @@ public class Possiede {
 	@ManyToOne
 	private Cliente cliente;
 
+	@Column
+	private boolean propAttuale;
 	
+	public void setPropAttuale(boolean propAttuale) {
+		this.propAttuale = propAttuale;
+	}
+	public boolean isPropAttuale() {
+		return propAttuale;
+	}
 
 	
 	public Cliente getCliente() {

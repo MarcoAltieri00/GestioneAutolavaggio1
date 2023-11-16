@@ -58,26 +58,67 @@ public class EseguitaService {
 				a=0;
 			}
 			
-			
+			a++;
 			return a;
 		}
 		
 	@Transactional
-	public void operaioEvade(Integer numLavoro) {
-		Eseguita e = this.erepo.findById(numLavoro).get();
-		if(e != null) {
-			e.setEvaso(true);
-			this.erepo.save(e);
-//			this.erepo.setEvadiFalse(numLavoro);
-		}
+	public void operaioEvade( Integer numLavoro) {
 		
+		
+		this.erepo.setEvadiFalse(numLavoro);
 		
 	}
 	
+	
+	
+	//tutte le operazioni eseguite su un singolo veicolo
+	public ArrayList <Eseguita> LavorazioniEseguiteSuUnVeicolo(ArrayList <Veicolo> lista, Cliente c){
+		
+		ArrayList <Eseguita> listaEs=new ArrayList <Eseguita> ();
+		  //tutte le lavorazioni eseguite su un veicolo di 1 cliente
+		ArrayList <Eseguita> listaF=new ArrayList <Eseguita> ();
+		if(!lista.isEmpty()) {
+		for(Veicolo v: lista) {
+			
+		//mi prende tutte le lavorazioni di 1 veicolo,gli passo 1 cliente e 1 veicolo,
+	    //operazioni fatte su quel veicolo e pagate da quel cliente			
+		listaEs=(ArrayList <Eseguita>)this.erepo.lavorazioniCliente(v,c);
+		for(Eseguita e: listaEs) {
+			
+			listaF.add(e);
+			
+		}
+		
+		}
+		
+		
+		return listaF;
+		}
+		else {
+			return null;
+		}
+	}
+	
+	public Float calcoloSpese(ArrayList <Eseguita> lista) {
+	    Float spese = 0f;
+
+	    if (lista != null) {
+	        for (Eseguita e : lista) {
+	            Lavorazione lav = e.getLavorazione();
+	            Float costo = lav.getCosto();
+	            spese = spese + costo;
+	        }
+	    }
+
+	    return spese;
+	}
 
 	public Integer insertEseguita(List<Integer> listaCodiceLavorazione , String targa ) {
-		
-		if (listaCodiceLavorazione != null && !listaCodiceLavorazione.isEmpty() && targa != null ) {
+		Optional<Veicolo> veicolo= this.vrepo.getVeicoloByTarga(targa);
+   	 if(veicolo.isPresent()){
+   		 Veicolo v=veicolo.get();
+		if (listaCodiceLavorazione != null && !listaCodiceLavorazione.isEmpty() ) {
 			
 			Integer cL=this.erepo.findMaxCodiceOrdine();
         	if(cL==null) {
@@ -86,7 +127,7 @@ public class EseguitaService {
         		cL++;
         	}
 			
-            List<Veicolo> veicolo= new ArrayList<>();
+            
             List<Lavorazione> listaLavorazione = new ArrayList<>();
             for (int cdL : listaCodiceLavorazione ) {
                 
@@ -97,7 +138,8 @@ public class EseguitaService {
             }
             for(Lavorazione l : listaLavorazione ) {
             	
-            	 Veicolo v= this.vrepo.getVeicoloByTarga(targa);
+            	 
+            	 
             	Integer codSq=this.srepo.findMaxCodiceSquadra();
             	Squadra squadra=this.srepo.getSquadraByCodiceSquadra(codSq);
             	
@@ -112,17 +154,18 @@ public class EseguitaService {
  	            
  	            
  	            this.erepo.save(form);
- 	            
+            	 }
             	
-            }
+            
 
             return 0;
+		}else {
+			return 1;
+		}
         } else {
             
-            return 1;
+            return 2;
         }
 	}
 
-
-  
 }

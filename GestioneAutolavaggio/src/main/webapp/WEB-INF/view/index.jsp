@@ -27,6 +27,7 @@
                 <td><a href="/giornaliero">Visualizza Lavorazioni Attive</a></td>
                 <td><a href="/linkEvadi">Ordini Giornalieri</a></td>
                 
+                
 
             </tr>
         </table>

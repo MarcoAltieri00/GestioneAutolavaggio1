@@ -60,8 +60,8 @@
             <% Integer a=(Integer)session.getAttribute("verifica");
             if (a != null) {
                 if (a == 0) { %>
-                    <%= "Veicolo è già presente" %>
-                <% } else if (a == 2) { %>
+                    <%= "Hai cambiato proprietario" %>                 
+                <% } else if (a == 2 && a==4) { %>
                     <%= "Il cliente non è presente" %> <a href="/nuovoCliente">Registralo ora</a>
                 <% }else if (a==1){ %>
                 	<%= "Veicolo registrato" %>

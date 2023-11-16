@@ -22,6 +22,8 @@ public class Veicolo {
 	@Column
 	private String targa;
 	
+	
+	
 	@OneToMany(mappedBy = "veicolo")
 	private List<Possiede> possiede;
 	
@@ -54,4 +56,6 @@ public class Veicolo {
 	public void setPossiede(List<Possiede> possiede) {
 		this.possiede = possiede;
 	}
+
+
 }

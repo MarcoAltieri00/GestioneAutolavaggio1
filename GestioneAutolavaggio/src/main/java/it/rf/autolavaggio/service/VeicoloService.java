@@ -19,26 +19,27 @@ public class VeicoloService {
 	private VeicoloRepository vrepo;
 
 	
-	public Integer insertVeicolo(Veicolo v) {
-		Optional <Veicolo> veicolo= this.vrepo.findById(v.getnTelaio());
-		if(veicolo.isPresent()) {
-			return 0;
-		}
-		else {
-			this.vrepo.save(v);	
-			return 1;
-		}	
-	}
+//	public Integer insertVeicolo(Veicolo v) {
+//		Optional <Veicolo> veicolo= this.vrepo.findById(v.getnTelaio());
+//		if(veicolo.isPresent()) {
+//			return 0;
+//		}
+//		else {
+//			v.setPropAttuale(true);
+//			this.vrepo.save(v);	
+//			return 1;
+//		}	
+//	}
 	
-	public ArrayList <Veicolo> creaLista(){
-		try {
-		ArrayList <Veicolo> l=(ArrayList<Veicolo>) this.vrepo.findAll();
-		return l;
-		
-		}catch(EmptyResultDataAccessException e) {
-			return null;
-		}
-}
+//	public ArrayList <Veicolo> creaLista(){
+//		try {
+//		ArrayList <Veicolo> l=(ArrayList<Veicolo>) this.vrepo.lista();
+//		return l;
+//		
+//		}catch(EmptyResultDataAccessException e) {
+//			return null;
+//		}
+//}
 	public Veicolo getVeicoloByTarga(String targa) {
         
         Optional<Veicolo> veicolo = vrepo.findByTarga(targa);

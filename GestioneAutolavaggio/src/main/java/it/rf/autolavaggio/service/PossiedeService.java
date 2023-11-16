@@ -35,18 +35,44 @@ public class PossiedeService {
 		
 	
 	
-	public Integer insertVeicolo(Veicolo v, String cf) {
+	public Integer insertVeicolo(Veicolo v,String cf) {
 	    Optional<Veicolo> veicolo = this.vrepo.findById(v.getnTelaio());
 
+	    //veicolo già registrato
 	    if (veicolo.isPresent()) {
-	        return 0; // Veicolo già presente
+	    	
+	    	Optional <Possiede> posDaMod=this.prepo.trovaPossiede(v);
+	    	Possiede possiedeDaMod=new Possiede();
+	    	possiedeDaMod= posDaMod.get();
+	    	possiedeDaMod.setPropAttuale(false);
+	    	
+	    	
+	    	Optional<Cliente> clientesw= this.crepo.findById(cf);
+
+	        if (clientesw.isPresent()) {
+	            Cliente c = clientesw.get(); //.get mette il nuovo cliente in c
+	          
+	            Possiede pos = new Possiede();
+	            pos.setPropAttuale(true);
+	            pos.setCliente(c);
+	            pos.setVeicolo(v);
+	            pos.setDataRegistrazione(new Date(System.currentTimeMillis())); // Set current date
+
+	            
+	            this.prepo.save(pos);
+	        }else {
+	        	return 4; //nuovo cliente non è registrato
+	        }
+	    	
+	        return 0; // cambio di proprietario del veicolo
 	    } else {
 	        Optional<Cliente> cliente = this.crepo.findById(cf);
 
 	        if (cliente.isPresent()) {
 	            Cliente c = cliente.get();
-
+	          
 	            Possiede pos = new Possiede();
+	            pos.setPropAttuale(true);
 	            pos.setCliente(c);
 	            pos.setVeicolo(v);
 	            pos.setDataRegistrazione(new Date(System.currentTimeMillis())); // Set current date
@@ -62,7 +88,12 @@ public class PossiedeService {
 	    }
 	}
 
+public ArrayList<Veicolo> ListaVeicoliCliente(Cliente c){ //questo metodo ritornerà un arraylist di veicoli
+	ArrayList <Veicolo> listaVeicoli =new ArrayList <>();
+	listaVeicoli= (ArrayList<Veicolo>)this.prepo.veicoliDIUnCliente(c);
 
+	return listaVeicoli;
+}
 		
 		
 		
@@ -77,5 +108,11 @@ public class PossiedeService {
 			return null;
 		}
 }
+
+
+
+
+
+
 
 }

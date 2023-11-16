@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import it.rf.autolavaggio.model.Cliente;
+import it.rf.autolavaggio.model.Eseguita;
 import it.rf.autolavaggio.model.Lavorazione;
 import it.rf.autolavaggio.model.Operaio;
 import it.rf.autolavaggio.model.Possiede;
@@ -53,9 +54,9 @@ public class MainController {
 	
 
 	@PostMapping(value = "/insertVeicolo")
-	public String insertVeicolo(@ModelAttribute Veicolo v, @RequestParam String cf, HttpSession session) {
+	public String insertVeicolo(@ModelAttribute Veicolo v,@RequestParam String cf,HttpSession session) {
 	    // ...
-	    Integer a = this.service5.insertVeicolo(v, cf);
+	    Integer a = this.service5.insertVeicolo(v,cf);
 
 	    ArrayList<RecuperoInfoDTO> lp = this.service5.creaLista();
 	    session.setAttribute("listapos", lp);
@@ -155,7 +156,7 @@ public class MainController {
 	        Integer b;
 	        
 	        if (operaioCf == null || operaioCf.isEmpty()) {
-	            // Nessuna checkbox selezionata, gestisci la situazione di conseguenza
+	            // Nessuna checkbox selezionata, gestisco la situazione di conseguenza
 	            session.setAttribute("verifica", -1);
 	        }
 	        ArrayList <Operaio> listaScelta =(ArrayList <Operaio>) this.service3.creaLista();
@@ -260,6 +261,59 @@ public String  evadiLink( HttpSession session)
 	 	session.setAttribute("tabella2", listaAttive);
     return "Operaio";
 }
+	
+	
+@PostMapping(value ="/visualizzaStorico")
+public String storico (@RequestParam("cfCliente")String cf,@ModelAttribute Cliente c, HttpSession session) {
+	
+	Cliente c1=(Cliente)this.service4.findById(cf);
+//passaggio lista veicoli
+ArrayList <Veicolo> listaV=this.service5.ListaVeicoliCliente(c1); 
+
+//passo quella lista di quel cliente e mi calcolo tutto
+ArrayList<Eseguita> listaE=this.service8.LavorazioniEseguiteSuUnVeicolo(listaV, c1);
+
+
+//dalla lista uscente mi calcolo le spese
+Float spese=this.service8.calcoloSpese(listaE);
+
+session.setAttribute("listaSpese", spese);
+session.setAttribute("listaVeicoli", listaV);
+session.setAttribute("listaOrdini", listaE);
+session.setAttribute("cliente", c1);
+return "StoricoCliente";
+	
+}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 
