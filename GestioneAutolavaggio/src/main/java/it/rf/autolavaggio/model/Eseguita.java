@@ -17,7 +17,7 @@ public class Eseguita {
 
 	@Id
 	@Column
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY) //autoincrement
 	private Integer numLavoro;
 	
 	@Column

@@ -131,7 +131,7 @@ public class EseguitaService {
             List<Lavorazione> listaLavorazione = new ArrayList<>();
             for (int cdL : listaCodiceLavorazione ) {
                 
-                Lavorazione lavorazione= this.lrepo.getLavorazioneByCodice(cdL);  //probabile problema
+                Lavorazione lavorazione= this.lrepo.getLavorazioneByCodice(cdL);  
                 if (lavorazione != null) {
                     listaLavorazione.add(lavorazione);  
                 }
